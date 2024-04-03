@@ -23,6 +23,9 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import { ProductDoc } from "./types/product";
+import { useItemStore  } from './productStore';
+import { onBeforeMount } from "vue";
 
 const links = ref([
   { text: "Home", to: "/", icon: "mdi-home" },
@@ -31,4 +34,16 @@ const links = ref([
   { text: "Groceries", to: "/groceries", icon: "mdi-cart" },
   { text: "Best Seller", to: "/bestseller", icon: "mdi-cash-register" },
 ]);
+
+const myStore = useItemStore();
+//myStore.init();
+const products = ref<ProductDoc[]>([]);
+
+onBeforeMount(async() => {
+  await myStore.$reset();
+  await myStore.init();
+  //not rendering right now, waiting for StoreItem.vue to be completed
+  products.value = myStore.products || [];
+});
 </script>
+./productStore
