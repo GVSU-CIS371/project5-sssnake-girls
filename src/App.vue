@@ -10,7 +10,20 @@
     <v-main class="bg-blue-lighten-5">
       <router-view v-slot="{ Component }">
         <transition name="shrink-explode">
-          <component :is="Component" />
+          <v-container>
+            <v-row>
+              <v-col
+                v-for="product in products"
+                :key="product.id"
+                cols="12"  
+                sm="6"    
+                md="4"    
+                lg="3"    
+              >
+                <store-item :product="product" />
+              </v-col>
+            </v-row>
+          </v-container>
         </transition>
       </router-view>
     </v-main>
@@ -22,10 +35,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import { ProductDoc } from "./types/product";
+import { computed,ref } from "vue";
+//import { ProductDoc } from "./types/product";
 import { useItemStore  } from './productStore';
 import { onBeforeMount } from "vue";
+import StoreItem from "./components/StoreItem.vue";
+
+const myStore = useItemStore();
+onBeforeMount(() => {
+  myStore.init();
+});
 
 const links = ref([
   { text: "Home", to: "/", icon: "mdi-home" },
@@ -35,15 +54,7 @@ const links = ref([
   { text: "Best Seller", to: "/bestseller", icon: "mdi-cash-register" },
 ]);
 
-const myStore = useItemStore();
-//myStore.init();
-const products = ref<ProductDoc[]>([]);
+const products = computed(() => myStore.products || []);
 
-onBeforeMount(async() => {
-  await myStore.$reset();
-  await myStore.init();
-  //not rendering right now, waiting for StoreItem.vue to be completed
-  products.value = myStore.products || [];
-});
 </script>
 ./productStore

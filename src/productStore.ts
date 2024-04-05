@@ -5,7 +5,6 @@ import { initProducts } from "./data-init";
 export const useItemStore = defineStore("ItemStore", {
     state: () => ({
         count: 0,
-        //data: null as bev[] | null,
         products: null as ProductDoc[] | null,
     }),
     actions: {
@@ -18,20 +17,12 @@ export const useItemStore = defineStore("ItemStore", {
         },
         filterByCategory(cat: string){
             this.products = initProducts.filter((prod) => prod.data.category == cat)
-        },
+        },  
         filterByRating(minRating: number){
             this.products = initProducts.filter((prod) => prod.data.rating >= minRating)
         },
-
-
-        //setData(value: bev){
-        //    this.increment()
-        //    this.data?.push(value)
-        //},
         async fetchData() {
             await new Promise(resolve => setTimeout(resolve, 1000));
-            //const exampleData: ProductDoc[] = [];
-            //this.products = exampleData;
         },
     }
 })
