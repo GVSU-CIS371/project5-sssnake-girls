@@ -20,6 +20,7 @@
                 md="4"    
                 lg="3"    
               >
+                <Component :is="Component"></Component>
                 <store-item :product="product" />
               </v-col>
             </v-row>
@@ -37,7 +38,7 @@
 <script lang="ts" setup>
 import { computed,ref } from "vue";
 //import { ProductDoc } from "./types/product";
-import { useItemStore  } from './productStore';
+import { useItemStore } from "./stores/ProductStore";
 import { onBeforeMount } from "vue";
 import StoreItem from "./components/StoreItem.vue";
 
