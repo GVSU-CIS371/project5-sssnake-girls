@@ -13,7 +13,6 @@ export const useItemStore = defineStore("ItemStore", {
         },
         init(){
             this.products = initProducts;
-            console.log(this.products.length);
         },
         filterByCategory(cat: string){
             this.products = initProducts.filter((prod) => prod.data.category == cat)

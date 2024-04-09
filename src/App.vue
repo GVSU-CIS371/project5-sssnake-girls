@@ -21,7 +21,7 @@
                 lg="3"    
               >
                 <Component :is="Component"></Component>
-                <store-item :product="product" />
+                <StoreItem :product="product" />
               </v-col>
             </v-row>
           </v-container>
