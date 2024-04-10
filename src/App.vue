@@ -11,6 +11,7 @@
       <router-view v-slot="{ Component }">
         <transition name="shrink-explode">
           <v-container>
+            <template v-if="products && products.length">
             <v-row>
               <v-col
                 v-for="product in products"
@@ -24,6 +25,7 @@
                 <StoreItem :product="product" />
               </v-col>
             </v-row>
+            </template>
           </v-container>
         </transition>
       </router-view>
