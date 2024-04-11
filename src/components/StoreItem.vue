@@ -18,8 +18,6 @@
 </template>
 
 <script lang="ts" setup>
-import { /*ref,*/ defineProps } from 'vue';
-//import { isImportAttributeName } from 'typescript';
 import { ProductDoc } from '../types/product';
 defineProps<{
     product: ProductDoc;

@@ -1,9 +1,4 @@
-<template>
-  
-</template>
-
 <script lang="ts" setup>
-import { computed } from "vue";
   import { useItemStore } from "../stores/ProductStore";
   import { onBeforeMount } from "vue";
  
@@ -11,8 +6,5 @@ import { computed } from "vue";
   onBeforeMount(() => {
     myStore.init();
   });
-
-  const products = computed(() => myStore.products || []);
-
 </script>
 ./productStore
