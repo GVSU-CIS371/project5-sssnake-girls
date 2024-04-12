@@ -4,7 +4,15 @@
             {{ product.data.name }}
         </v-card-title>
         <v-card-subtitle>
-            {{product.data.rating}} {{product.data.price}} {{product.data.stock}}
+        <span class="mdi mdi-star"></span>
+            {{product.data.rating}} 
+            <span>stars {{ message }}</span>
+
+<span class="mdi mdi-currency-usd"></span>
+
+{{product.data.price}} 
+<span class="mdi mdi-store-outline"></span>
+{{product.data.stock}}
             <!--might implement using icons, though preferably not the kind the prof used and definitely avoiding changing the rating-->
             <!--also if this is too crowded, one or two things can be changed to a card action-->
         </v-card-subtitle>
